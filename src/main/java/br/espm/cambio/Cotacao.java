@@ -1,5 +1,6 @@
 package br.espm.cambio;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -8,12 +9,12 @@ public class Cotacao {
     private UUID id;
     private UUID id_moeda;
     private Date data;
-    private double valor;
+    private BigDecimal valor;
 
     public Cotacao(){
     }
 
-    public Cotacao(UUID id_moeda, Date data, double valor){
+    public Cotacao(UUID id_moeda, Date data, BigDecimal valor){
         this.id_moeda = id_moeda;
         this.data = data;
         this.valor = valor;
@@ -43,11 +44,11 @@ public class Cotacao {
         this.data = data;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

@@ -35,6 +35,12 @@ public class MoedaService {
         return moedaRepository.save(new MoedaModel(vo)).to();
     }
 
+    public Moeda findBy(UUID id) {
+        return moedaRepository.findById(id.toString())
+                    .map(MoedaModel::to)
+                    .orElse(null);
+    }
+
     public Moeda findBySimbolo(String simbolo){
         return moedaRepository.findBySimbolo(simbolo)
                     .map(MoedaModel::to)
