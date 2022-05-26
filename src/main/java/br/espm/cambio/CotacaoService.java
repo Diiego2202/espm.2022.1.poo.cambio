@@ -33,6 +33,12 @@ public class CotacaoService {
         return cotacaoRepository.save(new CotacaoModel(vo)).to();
     }
 
+    public Cotacao findBy(UUID id) {
+        return cotacaoRepository.findById(id.toString())
+                    .map(CotacaoModel::to)
+                    .orElse(null);
+    }
+
     //TODO
     public Cotacao findByIdMoeda(String idMoeda){
         return null;

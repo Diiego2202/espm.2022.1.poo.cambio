@@ -2,6 +2,7 @@ package br.espm.cambio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class CambioResource {
 
     @Autowired
     private MoedaService moedaService;
+    private CotacaoService cotacaoService;
     
     @GetMapping("/hello")
     public String helloWorld(){
@@ -31,9 +33,15 @@ public class CambioResource {
         return moedaService.listAll();     
     }
 
-    @GetMapping("/moeda/{simbolo}")
-    public Moeda findMoedaBySimbolo(@PathVariable String simbolo){
-        return moedaService.findBySimbolo(simbolo);     
+    @GetMapping("/moeda/{simbolo:[A-Z]{3,}}")
+    public Moeda findMoedaBySimbolo(@PathVariable String simbolo) {
+        return moedaService.findBySimbolo(simbolo);
+    }
+
+    @GetMapping("/moeda/{id:[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}}")
+    public Moeda findMoedaById(@PathVariable String id) {
+        UUID uuid = UUID.fromString(id);
+        return moedaService.findBy(uuid);
     }
 
     @PostMapping("/moeda")
@@ -50,6 +58,14 @@ public class CambioResource {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
              
+    }
+
+
+    //Rotas da cotação
+    @GetMapping("/cotacao")
+    public List<Cotacao> listCotacao(){
+        
+        return cotacaoService.listAll();     
     }
 
     
