@@ -34,15 +34,17 @@ public class CotacaoModel {
 
     public CotacaoModel(Cotacao cotacao){
         this.idCotacao = cotacao.getId().toString();
-        this.idMoeda = cotacao.getId_moeda().toString();
+        this.idMoeda = cotacao.getMoeda().getId().toString();
         this.data = cotacao.getData();
         this.vrValor = cotacao.getValor();
     }
 
     public Cotacao to(){
         Cotacao cotacao = new Cotacao();
+        Moeda moeda = new Moeda();
+
         cotacao.setId(UUID.fromString(this.idCotacao));
-        cotacao.setId_moeda(UUID.fromString(this.idMoeda));
+        cotacao.setMoeda(moeda);
         cotacao.setData(this.data);
         cotacao.setValor(this.vrValor);
         return cotacao;

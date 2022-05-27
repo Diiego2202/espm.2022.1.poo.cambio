@@ -47,6 +47,10 @@ public class MoedaService {
                     .orElse(null);
     }
 
+    // public void deleteBy(String id){
+    //     moedaRepository.deleteById(id);
+    // }
+
     public void deleteBySimbolo(String simbolo){
         moedaRepository.deleteBySimbolo(simbolo);
     }

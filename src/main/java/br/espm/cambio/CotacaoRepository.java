@@ -1,5 +1,7 @@
 package br.espm.cambio;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -15,15 +17,6 @@ public interface CotacaoRepository extends CrudRepository<CotacaoModel, String>{
     Iterable<CotacaoModel> findAll();
 
     @Override
-    Optional<CotacaoModel> findById(String id);
-
-    // JQL - Java Query Language
-    // @Query("SELECT m from CotacaoModel m WHERE UPPER(m.idMoeda) = UPPER(:simbolo)")
-    // Optional<MoedaModel> findBySimbolo(@Param("simbolo") String simbolo);
-
-    // @Transactional
-    // @Modifying
-    // @Query("DELETE FROM MoedaModel m WHERE UPPER(m.txSimbolo) = UPPER(:simbolo)")
-    // void deleteBySimbolo(@Param("simbolo") String simbolo);
+    Optional<CotacaoModel> findById(String s);
 
 }

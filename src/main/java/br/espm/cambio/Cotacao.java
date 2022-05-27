@@ -7,18 +7,18 @@ import java.util.UUID;
 public class Cotacao {
 
     private UUID id;
-    private UUID id_moeda;
+    private Moeda moeda;
     private Date data;
     private BigDecimal valor;
 
-    public Cotacao(){
-    }
+    // public Cotacao(){
+    // }
 
-    public Cotacao(UUID id_moeda, Date data, BigDecimal valor){
-        this.id_moeda = id_moeda;
-        this.data = data;
-        this.valor = valor;
-    }
+    // public Cotacao(UUID id_moeda, Date data, BigDecimal valor){
+    //     this.id_moeda = id_moeda;
+    //     this.data = data;
+    //     this.valor = valor;
+    // }
 
     public UUID getId() {
         return id;
@@ -28,12 +28,12 @@ public class Cotacao {
         this.id = id;
     }
 
-    public UUID getId_moeda() {
-        return id_moeda;
+    public Moeda getMoeda() {
+        return moeda;
     }
 
-    public void setId_moeda(UUID id_moeda) {
-        this.id_moeda = id_moeda;
+    public void setMoeda(Moeda moeda) {
+        this.moeda = moeda;
     }
 
     public Date getData() {
