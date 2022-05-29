@@ -1,24 +1,22 @@
 package br.espm.cambio;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Cotacao {
 
     private UUID id;
-    private Moeda moeda;
-    private Date data;
+    private UUID idMoeda;
+    private LocalDate data;
     private BigDecimal valor;
 
-    // public Cotacao(){
-    // }
+    public Cotacao(){
+    }
 
-    // public Cotacao(UUID id_moeda, Date data, BigDecimal valor){
-    //     this.id_moeda = id_moeda;
-    //     this.data = data;
-    //     this.valor = valor;
-    // }
+    public Cotacao(BigDecimal valor){
+        this.valor = valor;
+    }
 
     public UUID getId() {
         return id;
@@ -28,19 +26,19 @@ public class Cotacao {
         this.id = id;
     }
 
-    public Moeda getMoeda() {
-        return moeda;
+    public UUID getIdMoeda() {
+        return idMoeda;
     }
 
-    public void setMoeda(Moeda moeda) {
-        this.moeda = moeda;
+    public void setIdMoeda(UUID idMoeda) {
+        this.idMoeda = idMoeda;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

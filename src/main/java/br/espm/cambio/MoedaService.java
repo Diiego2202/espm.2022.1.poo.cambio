@@ -1,6 +1,5 @@
 package br.espm.cambio;
 
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -47,9 +46,9 @@ public class MoedaService {
                     .orElse(null);
     }
 
-    // public void deleteBy(String id){
-    //     moedaRepository.deleteById(id);
-    // }
+    public void delete(String id){
+        moedaRepository.deleteById(id);
+    }
 
     public void deleteBySimbolo(String simbolo){
         moedaRepository.deleteBySimbolo(simbolo);

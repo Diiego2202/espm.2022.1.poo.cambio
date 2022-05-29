@@ -1,8 +1,6 @@
 package br.espm.cambio;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,14 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class CambioResource {
-
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
     @Autowired
     private MoedaService moedaService;
@@ -56,16 +50,10 @@ public class CambioResource {
         moedaService.create(moeda);
     }
 
-    // @DeleteMapping("/moeda/{id:[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}}")
-    // public ResponseEntity<HttpStatus> deleteById(@PathVariable String id){
-    //     try {
-    //         moedaService.deleteBy(id);  
-    //         return new ResponseEntity<>(HttpStatus.OK);
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-             
-    // }
+    @DeleteMapping("/moeda/{id:[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}}")
+    public void delete(@PathVariable String id){
+        moedaService.delete(id);
+    }
 
     @DeleteMapping("/moeda/{simbolo:[A-Z]{3,}}")
     public ResponseEntity<HttpStatus> deleteBySimbolo(@PathVariable String simbolo){
@@ -80,5 +68,17 @@ public class CambioResource {
 
 
     //Rotas da cotação
+    @GetMapping("/cotacao/{simbolo:[A-Z]{3,}}")
+    public Cotacao findCotacaoBySimbolo(@PathVariable String simbolo) {
+        return cotacaoService.findBySimbolo(simbolo);
+    }
+
+    @PostMapping("/cotacao/{simbolo}/{ano}/{mes}/{dia}")
+    public void save(@PathVariable String simbolo, @PathVariable String ano, @PathVariable String mes, @PathVariable String dia, @RequestBody Cotacao cotacao){
+        LocalDate data = LocalDate.parse(ano + "-" + mes + "-" + dia);
+        cotacao.setData(data);
+        cotacaoService.create(cotacao);
+    }
+
       
 }

@@ -1,6 +1,7 @@
 package br.espm.cambio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,8 +24,7 @@ public class CotacaoModel {
     private String idMoeda;
 
     @Column(name = "dt_data")
-    @Temporal(TemporalType.DATE)
-    private Date data;
+    private LocalDate data;
 
     @Column(name = "vr_valor")
     private BigDecimal vrValor;
@@ -34,17 +34,15 @@ public class CotacaoModel {
 
     public CotacaoModel(Cotacao cotacao){
         this.idCotacao = cotacao.getId().toString();
-        this.idMoeda = cotacao.getMoeda().getId().toString();
+        this.idMoeda = cotacao.getIdMoeda().toString();
         this.data = cotacao.getData();
         this.vrValor = cotacao.getValor();
     }
 
     public Cotacao to(){
         Cotacao cotacao = new Cotacao();
-        Moeda moeda = new Moeda();
-
         cotacao.setId(UUID.fromString(this.idCotacao));
-        cotacao.setMoeda(moeda);
+        cotacao.setIdMoeda(UUID.fromString(this.idMoeda));
         cotacao.setData(this.data);
         cotacao.setValor(this.vrValor);
         return cotacao;

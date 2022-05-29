@@ -21,10 +21,8 @@ public interface MoedaRepository extends CrudRepository<MoedaModel, String>{
     @Query("SELECT m from MoedaModel m WHERE UPPER(m.txSimbolo) = UPPER(:simbolo)")
     Optional<MoedaModel> findBySimbolo(@Param("simbolo") String simbolo);
 
-    // @Override
-    // @Transactional
-    // @Modifying
-    // void deleteById(String id);
+    @Override
+    void deleteById(String id);
 
     @Transactional
     @Modifying

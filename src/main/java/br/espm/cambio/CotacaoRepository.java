@@ -19,4 +19,8 @@ public interface CotacaoRepository extends CrudRepository<CotacaoModel, String>{
     @Override
     Optional<CotacaoModel> findById(String s);
 
+    // JQL, retorna o objeto
+    @Query("SELECT c from CotacaoModel c WHERE idMoeda = (SELECT idMoeda from MoedaModel WHERE UPPER(txSimbolo) = UPPER(:simbolo))")
+    Optional<CotacaoModel> findBySimbolo(@Param("simbolo") String simbolo);
+
 }
