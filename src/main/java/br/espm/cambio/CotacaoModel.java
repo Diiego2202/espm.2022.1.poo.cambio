@@ -1,6 +1,5 @@
 package br.espm.cambio;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -24,7 +23,7 @@ public class CotacaoModel {
     private LocalDate dtData;
 
     @Column(name = "vr_valor")
-    private BigDecimal vrValor;
+    private Double vrValor;
 
     public CotacaoModel(){
     }

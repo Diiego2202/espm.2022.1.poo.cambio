@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -73,14 +75,13 @@ public class CambioResource {
         return cotacaoService.findBySimbolo(simbolo);
     }
 
-    @PostMapping("/cotacao/{simbolo}/{ano}/{mes}/{dia}")
+    @RequestMapping(path = "/cotacao/{simbolo}/{ano}/{mes}/{dia}", method = RequestMethod.POST)
     public void save(@PathVariable String simbolo, @PathVariable String ano, @PathVariable String mes, @PathVariable String dia, @RequestBody Cotacao aux){
         LocalDate data = LocalDate.parse(ano + "-" + mes + "-" + dia);
-        Cotacao cotacao = new Cotacao();
+        Cotacao cotacao = new Cotacao(aux.getVrValor());
         cotacao.setDtData(data);
         UUID id = moedaService.findBySimbolo(simbolo).getId();
         cotacao.setIdMoeda(id);
-        cotacao.setVrValor(aux.getVrValor());
         cotacaoService.create(cotacao);
     }
 
