@@ -2,15 +2,12 @@ package br.espm.cambio;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "cotacao")
@@ -24,7 +21,7 @@ public class CotacaoModel {
     private String idMoeda;
 
     @Column(name = "dt_data")
-    private LocalDate data;
+    private LocalDate dtData;
 
     @Column(name = "vr_valor")
     private BigDecimal vrValor;
@@ -35,16 +32,16 @@ public class CotacaoModel {
     public CotacaoModel(Cotacao cotacao){
         this.idCotacao = cotacao.getId().toString();
         this.idMoeda = cotacao.getIdMoeda().toString();
-        this.data = cotacao.getData();
-        this.vrValor = cotacao.getValor();
+        this.dtData = cotacao.getDtData();
+        this.vrValor = cotacao.getVrValor();
     }
 
     public Cotacao to(){
         Cotacao cotacao = new Cotacao();
         cotacao.setId(UUID.fromString(this.idCotacao));
         cotacao.setIdMoeda(UUID.fromString(this.idMoeda));
-        cotacao.setData(this.data);
-        cotacao.setValor(this.vrValor);
+        cotacao.setDtData(this.dtData);
+        cotacao.setVrValor(this.vrValor);
         return cotacao;
     }
 }

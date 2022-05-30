@@ -74,9 +74,13 @@ public class CambioResource {
     }
 
     @PostMapping("/cotacao/{simbolo}/{ano}/{mes}/{dia}")
-    public void save(@PathVariable String simbolo, @PathVariable String ano, @PathVariable String mes, @PathVariable String dia, @RequestBody Cotacao cotacao){
+    public void save(@PathVariable String simbolo, @PathVariable String ano, @PathVariable String mes, @PathVariable String dia, @RequestBody Cotacao aux){
         LocalDate data = LocalDate.parse(ano + "-" + mes + "-" + dia);
-        cotacao.setData(data);
+        Cotacao cotacao = new Cotacao();
+        cotacao.setDtData(data);
+        UUID id = moedaService.findBySimbolo(simbolo).getId();
+        cotacao.setIdMoeda(id);
+        cotacao.setVrValor(aux.getVrValor());
         cotacaoService.create(cotacao);
     }
 

@@ -14,9 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CotacaoService {
 
-    @Autowired
-    private MoedaService moedaService;
-
     @Autowired 
     private CotacaoRepository cotacaoRepository;
 

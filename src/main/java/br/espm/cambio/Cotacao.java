@@ -8,14 +8,14 @@ public class Cotacao {
 
     private UUID id;
     private UUID idMoeda;
-    private LocalDate data;
-    private BigDecimal valor;
+    private LocalDate dtData;
+    private BigDecimal vrValor;
 
     public Cotacao(){
     }
 
     public Cotacao(BigDecimal valor){
-        this.valor = valor;
+        this.vrValor = valor;
     }
 
     public UUID getId() {
@@ -34,20 +34,20 @@ public class Cotacao {
         this.idMoeda = idMoeda;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDtData() {
+        return dtData;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDtData(LocalDate data) {
+        this.dtData = data;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getVrValor() {
+        return vrValor;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setVrValor(BigDecimal valor) {
+        this.vrValor = valor;
     }
 
     

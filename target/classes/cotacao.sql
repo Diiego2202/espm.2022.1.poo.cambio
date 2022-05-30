@@ -1,5 +1,5 @@
 CREATE TABLE cotacao (
-    id_cotacao varchar(40) not null,
+    id_cotacao varchar(64) not null,
     id_moeda varchar(64) not null,
     dt_data date not null,
     vr_valor decimal(14,4),
