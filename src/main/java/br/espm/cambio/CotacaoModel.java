@@ -23,7 +23,7 @@ public class CotacaoModel {
     private LocalDate dtData;
 
     @Column(name = "vr_valor")
-    private Double vrValor;
+    private Double valor;
 
     public CotacaoModel(){
     }
@@ -32,7 +32,7 @@ public class CotacaoModel {
         this.idCotacao = cotacao.getId().toString();
         this.idMoeda = cotacao.getIdMoeda().toString();
         this.dtData = cotacao.getDtData();
-        this.vrValor = cotacao.getVrValor();
+        this.valor = cotacao.getValor();
     }
 
     public Cotacao to(){
@@ -40,7 +40,7 @@ public class CotacaoModel {
         cotacao.setId(UUID.fromString(this.idCotacao));
         cotacao.setIdMoeda(UUID.fromString(this.idMoeda));
         cotacao.setDtData(this.dtData);
-        cotacao.setVrValor(this.vrValor);
+        cotacao.setValor(this.valor);
         return cotacao;
     }
 }

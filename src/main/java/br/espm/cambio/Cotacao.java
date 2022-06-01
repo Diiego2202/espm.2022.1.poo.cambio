@@ -8,13 +8,13 @@ public class Cotacao {
     private UUID id;
     private UUID idMoeda;
     private LocalDate dtData;
-    private Double vrValor;
+    private Double valor;
 
     public Cotacao(){
     }
 
     public Cotacao(Double valor){
-        this.vrValor = valor;
+        this.valor = valor;
     }
 
     public UUID getId() {
@@ -41,12 +41,12 @@ public class Cotacao {
         this.dtData = data;
     }
 
-    public Double getVrValor() {
-        return vrValor;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setVrValor(Double valor) {
-        this.vrValor = valor;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
     
