@@ -41,10 +41,6 @@ public class CotacaoService {
         .stream().map(CotacaoModel::to)
         .collect(Collectors.toList());
 
-
-        // return cotacaoRepository.findBySimbolo(simbolo)
-        //                         .map(CotacaoModel::to)
-        //                         .orElse(null);
     }
 
 }
