@@ -71,7 +71,7 @@ public class CambioResource {
 
     //Rotas da cotação
     @GetMapping("/cotacao/{simbolo:[A-Z]{3,}}")
-    public Cotacao findCotacaoBySimbolo(@PathVariable String simbolo) {
+    public List<Cotacao> findCotacaoBySimbolo(@PathVariable String simbolo) {
         return cotacaoService.findBySimbolo(simbolo);
     }
 

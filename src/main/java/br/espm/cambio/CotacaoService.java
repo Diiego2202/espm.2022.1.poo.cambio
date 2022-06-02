@@ -32,10 +32,19 @@ public class CotacaoService {
         return cotacaoRepository.save(new CotacaoModel(vo)).to();
     }
 
-    public Cotacao findBySimbolo(String simbolo){
-        return cotacaoRepository.findBySimbolo(simbolo)
-                                .map(CotacaoModel::to)
-                                .orElse(null);
+    public List<Cotacao> findBySimbolo(String simbolo){
+        return StreamSupport
+        // transforma de iteravel para lista
+        .stream(cotacaoRepository.findBySimbolo(simbolo).spliterator(), false)
+        .collect(Collectors.toList())
+        // transforma de Model para Objeto
+        .stream().map(CotacaoModel::to)
+        .collect(Collectors.toList());
+
+
+        // return cotacaoRepository.findBySimbolo(simbolo)
+        //                         .map(CotacaoModel::to)
+        //                         .orElse(null);
     }
 
 }

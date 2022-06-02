@@ -39,7 +39,7 @@ public class CotacaoModel {
         Cotacao cotacao = new Cotacao();
         cotacao.setId(UUID.fromString(this.idCotacao));
         cotacao.setIdMoeda(UUID.fromString(this.idMoeda));
-        cotacao.setDtData(this.dtData);
+        cotacao.setDtData(this.dtData); 
         cotacao.setValor(this.valor);
         return cotacao;
     }
